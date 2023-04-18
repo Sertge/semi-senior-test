@@ -1,7 +1,17 @@
 {
   "name": "properties",
-  "version": "1.0.0",
-  "description": "microservice for reading the databases from the database",
-  "main": "index.js",
-  "license": "MIT"
+  "description": "microservice for reading the properties",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1",
+    "typedi": "^0.10.0",
+    "typeorm": "^0.3.15"
+  }
 }
