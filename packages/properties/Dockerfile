@@ -6,10 +6,10 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-COPY . ./
+COPY . .
 
-RUN npm run build
+RUN yarn build
 
-CMD npm run start
+CMD yarn start
 
 EXPOSE 4000

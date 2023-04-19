@@ -82,6 +82,7 @@ packages/*/.env
 # Nuxt.js build / generate output
 .nuxt
 dist
+packages/*/dist/
 
 # Gatsby files
 .cache/
