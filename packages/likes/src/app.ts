@@ -1,7 +1,8 @@
 import * as express from 'express'
 import datasource from '../config/db/postgres'
 import * as cookieParser from 'cookie-parser'
-var likesRouter = require('../routes/likes')
+const likesRouter = require('../routes/likes')
+const usersRoutes = require('../routes/users')
 
 // Establish database connection
 datasource
@@ -20,5 +21,6 @@ app.use(express.urlencoded({ extended: false}))
 app.use(cookieParser())
 
 app.use('/like', likesRouter)
+app.use('/users', usersRoutes)
 
 app.listen(3000)
