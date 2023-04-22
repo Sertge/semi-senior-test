@@ -1,7 +1,7 @@
 import * as express from 'express'
+import { authenticate } from './auth'
 import datasource from '../config/db/postgres'
-import * as cookieParser from 'cookie-parser'
-var propertiesRouter = require('../routes/properties')
+const propertiesRouter = require('../routes/properties')
 
 // Establish database connection
 datasource
@@ -17,8 +17,7 @@ datasource
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
 
-app.use('/properties', propertiesRouter)
+app.use('/properties', authenticate, propertiesRouter)
 
 app.listen(3000)

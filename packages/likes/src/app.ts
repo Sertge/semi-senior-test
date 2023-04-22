@@ -1,6 +1,6 @@
 import * as express from 'express'
 import datasource from '../config/db/postgres'
-import * as cookieParser from 'cookie-parser'
+const { authenticate } = require('./auth')
 const likesRouter = require('../routes/likes')
 const usersRoutes = require('../routes/users')
 
@@ -18,9 +18,8 @@ datasource
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false}))
-app.use(cookieParser())
 
-app.use('/like', likesRouter)
+app.use('/like', authenticate, likesRouter)
 app.use('/users', usersRoutes)
 
-app.listen(3000)
+app.listen(3001)

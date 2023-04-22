@@ -12,7 +12,7 @@ router.get('/', async function (req: Request, res: Response, next: NextFunction)
 })
 
 /* POST Liked property. */
-router.post('/like-property', async function(req: Request, res: Response) {
+router.post('/like-property', async function(req: Request, res: Response, next: NextFunction) {
   const likesRepository = datasource.getRepository(Like)
   const { body } = req
   const savedOperationResult = await likesRepository.save(body)
@@ -34,3 +34,5 @@ router.delete('like-property', async function(req: Request, res: Response) {
   }
   res.send(await likesRepository.delete(id))
 })
+
+module.exports = router

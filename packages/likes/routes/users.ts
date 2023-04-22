@@ -2,6 +2,7 @@ import * as express from 'express'
 const router = express.Router()
 import * as bcrypt from 'bcrypt'
 import * as jwt from 'jsonwebtoken'
+import * as cookie from 'cookie'
 import { Request, Response, NextFunction } from 'express'
 import datasource from '../config/db/postgres'
 import { User } from '../domain/users'
@@ -30,7 +31,11 @@ router.post('/signup', async function (req: Request, res: Response) {
   const savedOperationResult = await usersRepository.save({ email, username, first_name, last_name, is_active: true })
   await userPasswordRepository.save({ id: savedOperationResult.id, username, hashedPassword })
   const token = jwt.sign({ id: savedOperationResult.id, username: savedOperationResult.username}, secretKey)
-  res.json({ token })
+  res.setHeader('Set-Cookie', cookie.serialize('auth', `bearer ${token}`,{
+    maxAge: 3600*12, // 12 hours
+    httpOnly: true,
+    sameSite: 'strict'
+  }))
 })
 
 router.post('/login', async function (req: Request, res: Response) {
@@ -48,8 +53,14 @@ router.post('/login', async function (req: Request, res: Response) {
 
   if (isValidPassword) {
     const token = jwt.sign({ id: userFound.id, username: userFound.username}, secretKey)
-    res.json({ token })
+    res.setHeader('Set-Cookie', cookie.serialize('auth', `bearer ${token}`,{
+      maxAge: 3600*12, // 12 hours
+      httpOnly: true,
+      sameSite: 'strict'
+    }))
   } else {
     res.status(500).send('Error logging in')
   }
 })
+
+module.exports = router

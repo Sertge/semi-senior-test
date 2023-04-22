@@ -42,3 +42,9 @@ You can build and run a single microservice by running the command:
 docker compose up [microservice_name]
 ```
 
+## Running without docker
+in order to run in development mode without docker, you'll need to load the environment variables from the .env file
+Linux: 
+`export $(cat .env)`
+Windoes:
+`export env`
