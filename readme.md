@@ -14,10 +14,6 @@ This service is called `properties` and allows users to get the properties that 
 
 This service is called `likes` and allows users to like the properties queried on the `properties` services. This service is exposed on port 4001
 
-### 3. interface service
-
-This service is the interface for the frontend to work. It was not mandatory on the test request but it allows for an easier interaction with the backend services. This service is exposed on port 3000
-
 ## Setting up Env
 
 a `.env.example` file has been included on each microservice, this contains the names of the required environment constants for this service to work.
@@ -46,5 +42,5 @@ docker compose up [microservice_name]
 in order to run in development mode without docker, you'll need to load the environment variables from the .env file
 Linux: 
 `export $(cat .env)`
-Windoes:
+Windows:
 `export env`
