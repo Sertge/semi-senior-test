@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm'
 
-@Entity()
+@Entity({ name: 'property' })
 export class Property {
   @PrimaryGeneratedColumn()
   id: number
@@ -19,4 +19,5 @@ export class Property {
 
   @Column({type: 'int4'})
   year: number
+
 }
