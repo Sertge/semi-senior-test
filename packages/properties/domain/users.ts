@@ -21,6 +21,6 @@ export class User {
   @Column()
   is_active: boolean
 
-  @OneToMany(() => Like, (like) => like.user, )
+  @OneToMany(() => Like, (like) => like.user)
   like: Like[]
 }

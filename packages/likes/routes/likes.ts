@@ -5,14 +5,19 @@ import datasource from '../config/db/postgres'
 import { Like } from '../domain/likes'
 
 /* GET Liked properties. */
-router.get('/', async function (req: Request, res: Response, next: NextFunction) {
+router.get('/property', async function (req: Request, res: Response) {
   const likesRepository = datasource.getRepository(Like)
-  const [ foundProperties, count ] = await likesRepository.findAndCountBy(req.query)
-  res.send({ data: foundProperties, count })
+  const id = req.query.id as string
+  const [ foundUsers, count ] = await likesRepository.findAndCountBy({ id: parseInt(id) })
+  res.send({ data: foundUsers, count })
+})
+
+router.get('/user', async function (req: Request, res: Response) {
+
 })
 
 /* POST Liked property. */
-router.post('/like-property', async function(req: Request, res: Response, next: NextFunction) {
+router.post('/like-property', async function(req: Request, res: Response) {
   const likesRepository = datasource.getRepository(Like)
   const { body } = req
   const savedOperationResult = await likesRepository.save(body)
