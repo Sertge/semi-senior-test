@@ -7,11 +7,9 @@ export class Like {
   @PrimaryGeneratedColumn()
   id: number
 
-  @ManyToOne(() => Property, { cascade: [ 'insert' ] })
-  @JoinColumn()
-  property: number
+  @ManyToOne(() => Property, { eager: true })
+  property: Property
 
-  @ManyToOne(() => User, { cascade: [ 'insert' ] })
-  @JoinColumn()
-  user: number
+  @ManyToOne(() => User, { eager: true })
+  user: User
 }

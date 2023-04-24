@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express'
 export function authenticate (req: Request & { user: any}, res: Response, next: NextFunction) {
   const secretKey = process.env.JWT_KEY
   const cookies = cookie.parse(req.headers.cookie || '')
-  const authHeader = cookies.name
+  const authHeader = cookies.auth
   if (!authHeader) {
     return res.status(401).send('Authorization header missing')
   }

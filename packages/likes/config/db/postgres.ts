@@ -1,6 +1,7 @@
 import * as path from 'path'
 import Container from 'typedi'
 import { DataSource } from 'typeorm'
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
 const datasource = new DataSource({
   type: 'postgres',
@@ -9,6 +10,7 @@ const datasource = new DataSource({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
   database: process.env.DB_SCHEMA,
+  namingStrategy: new SnakeNamingStrategy(),
   entities: [path.join(__dirname, '../../domain/**/*.js')],
   logging: ['query', 'error']
 })

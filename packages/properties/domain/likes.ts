@@ -7,11 +7,11 @@ export class Like {
   @PrimaryGeneratedColumn()
   id: number
 
-  @ManyToOne(() => Property, { cascade: [ 'insert' ] })
+  @ManyToOne(() => Property, { cascade: [ 'insert', 'remove' ] })
   @JoinColumn()
   property: number
 
-  @ManyToOne(() => User, { cascade: [ 'insert' ] })
+  @ManyToOne(() => User, { cascade: [ 'insert', 'remove' ] })
   @JoinColumn()
   user: number
 }

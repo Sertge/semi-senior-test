@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, ManyToOne } from 'typeorm'
 import { Like } from './likes'
+import { Status } from './status'
 
 @Entity({ name: 'property' })
 export class Property {
@@ -21,6 +22,10 @@ export class Property {
   @Column({type: 'int4'})
   year: number
 
+  @ManyToOne(() => Status)
+  status: Status
+
   @OneToMany(() => Like, (like) => like.property, { cascade: [ 'insert' ] })
+  @JoinColumn()
   likes: Like[]
 }

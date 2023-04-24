@@ -17,7 +17,8 @@
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
     "typedi": "^0.10.0",
-    "typeorm": "^0.3.15"
+    "typeorm": "^0.3.15",
+    "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
     "@types/cookie": "^0.5.1",
