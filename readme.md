@@ -56,3 +56,11 @@ Linux:
 `export $(cat .env)`
 Windows:
 `export env`
+
+## Testing with Postman / Insomnia
+In order to test the containers, use Postman or Insomnia with the provided collection file
+```
+Semi-senior-test.postman_collection.json
+```
+
+In order to start testing, you need to create a new user on the database as most endpoints are auth protected

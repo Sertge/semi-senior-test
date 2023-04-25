@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "b476165d-d243-48e0-bffb-849351482b36",
+		"name": "Semi-senior test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18793924"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get User List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"my_username@addres.com\",\r\n    \"password\": \"some_password\",\r\n    \"username\": \"my_username\" ,\r\n    \"first_name\": \"user\",\r\n    \"last_name\": \"name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/signup",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"my_username\",\r\n    \"password\": \"some_password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/login",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users/me",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users/logout",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "Get Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/properties",
+							"host": [
+								"localhost:3000"
+							],
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Id of the property",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pre_sale",
+									"description": "name of the current status of the property",
+									"disabled": true
+								},
+								{
+									"key": "priceFrom",
+									"value": "500",
+									"description": "Starting price to search for",
+									"disabled": true
+								},
+								{
+									"key": "priceTo",
+									"value": "2000",
+									"description": "Max price to search for",
+									"disabled": true
+								},
+								{
+									"key": "yearFrom ",
+									"value": "1900",
+									"description": "Starting year to search for",
+									"disabled": true
+								},
+								{
+									"key": "yearTo",
+									"value": "2023",
+									"description": "Max year to search for",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Denver",
+									"description": "City where the property is located",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Property By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/properties/1",
+							"host": [
+								"localhost:3000"
+							],
+							"path": [
+								"properties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "Get Likes By",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/like/property?id=1",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"like",
+								"property"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/like/property",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"like",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlike Property",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/like/property",
+							"host": [
+								"localhost:3001"
+							],
+							"path": [
+								"like",
+								"property"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "property_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
