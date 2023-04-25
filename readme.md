@@ -1,10 +1,22 @@
 # Test for semi senior position
 
 Welcome to my microservices test
+Tech stack used:
+TypeORM
+PostgresQL
+Express.JS
+Node.JS
+Cookie
+Docker for microservices
+Postman for testing the service
+
+## Updates done
+In order to create the application, some modifications were done on the database to extend the current model:
+Include new table "Likes" where the liked properties are saved
 
 ## Available Microservices:
 
-In this test, we create three microservices
+In this test, we create two microservices
 
 ### 1. properties service
 

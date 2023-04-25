@@ -1,6 +1,6 @@
 import * as express from 'express'
 const router = express.Router()
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 import datasource from '../config/db/postgres'
 import { Like } from '../domain/likes'
 import { User } from '../domain/users'
@@ -35,6 +35,11 @@ router.post('/property', async function (req: Request & { user: any }, res: Resp
   const { id } = req.body
   try {
     const foundUser = await usersRepository.findOneByOrFail({ username: req.user.username })
+    const foundLike = await likesRepository.findOneBy({ property: { id }, user: { id: foundUser.id }})
+    if (foundLike !== null) {
+      res.status(200).send(foundLike)
+      return
+    }
     const savedOperationResult = await likesRepository.save({ property: id, user: foundUser })
     res.send(savedOperationResult)
   } catch (err) {

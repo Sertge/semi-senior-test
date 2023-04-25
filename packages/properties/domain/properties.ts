@@ -23,6 +23,7 @@ export class Property {
   year: number
 
   @ManyToOne(() => Status)
+  @JoinColumn()
   status: Status
 
   @OneToMany(() => Like, (like) => like.property, { cascade: [ 'insert' ] })
